@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Deporte</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <br/>
+    <ion-card-header color="secondary" >
+      Empieza a moverte!!
+    </ion-card-header>
+
+    <div align="center">
+        <h1 class="crono">{{horahtml}}:{{minutohtml}}:{{segundohtml}}.{{centesimahtml}}</h1>
+        <button ion-button round outline [color]="isStop    ? 'primary' : 'dark'"   [disabled]="!isStop"  (click)="stop()"> <ion-icon name="pause"></ion-icon> </button>
+        <button ion-button round outline [color]="isStart   ? 'secondary' : 'dark'" [disabled]="!isStart"  (click)="start()"> <ion-icon name="play"></ion-icon> </button>
+        <button ion-button round outline [color]="isRestart ? 'danger' : 'dark'"    [disabled]="!isRestart" (click)="restart()"> <ion-icon name="square"></ion-icon> </button>
+
+    </div>
+    <br/>
+  </ion-card>
+  <h1 class="crono">{{this.dist}} </h1>
+  <h4 class="crono">{{this.coords.lat}},{{this.coords.lng}} </h4>
+  <h4>Fecha: {{this.run.fecha}} </h4>
+  <h4>Hora: {{this.run.hora}} </h4>
+  <h4>Distancia: {{this.run.distancia}} km</h4>
+  <h4>Tiempo: {{this.run.tiempocarrera}} s</h4>
+  <h4>Velocidad: {{this.run.velocidad}} m/s</h4>
+  <h4>gps: {{this.run.gps}} </h4>
+  <h4>Cal: {{this.run.caloria}} Kcal</h4>
+
+</ion-content>
