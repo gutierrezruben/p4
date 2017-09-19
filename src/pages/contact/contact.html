@@ -6,22 +6,29 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
 
-  <ion-refresher (ionRefresh)="doRefresh($event)">
-     <ion-refresher-content
-       pullingIcon="arrow-dropdown"
-       pullingText="Arrastra para actualizar"
-       refreshingSpinner="circles"
-       refreshingText="CARGANDO...">
-     </ion-refresher-content>
-   </ion-refresher>
-  <ion-list>
-    <ion-item *ngIf='runs.length == 0'>Lista vacia</ion-item>
-    <ion-item-sliding #sliding *ngFor="let sitio of sitios">
-      <ion-item>
-        <ion-label>{{runs.fecha}}</ion-label>
-      </ion-item>
-    </ion-item-sliding>
+<!--ion-content>
+    <ion-list *ngFor="let run of runs; let i = index" >
+        <ion-list-header>
+          {{ run.fecha }}
+        </ion-list-header>
+        <ion-list *ngFor="let r of runs; let j = index" >
+          <button ion-item (click)="mostrarInfo(r)" *ngIf="r.fecha === run.fecha"  detail-none>
+            {{ r.hora }}
+          </button>
+      </ion-list>
+  </ion-list>
+</ion-content-->
+
+<ion-content padding>
+    <ion-list>
+        <ion-list-header *ngFor="let o of orden; let i = index">
+          {{ o.fecha }}
+        </ion-list-header>
+        <ion-list *ngFor="let r of o.runs; let j = index" >
+          <button ion-item (click)="mostrarInfo(r)" detail-none>
+            {{ r.hora }}
+          </button>
+      </ion-list>
   </ion-list>
 </ion-content>
