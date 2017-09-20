@@ -20,15 +20,30 @@
   </ion-list>
 </ion-content-->
 
-<ion-content padding>
-    <ion-list>
-        <ion-list-header *ngFor="let o of orden; let i = index">
-          {{ o.fecha }}
-        </ion-list-header>
-        <ion-list *ngFor="let r of o.runs; let j = index" >
-          <button ion-item (click)="mostrarInfo(r)" detail-none>
-            {{ r.hora }}
+<ion-content >
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+    <ion-list  >
+        <ion-list-header *ngFor="let f of fecha; let i = index" no-lines no-padding>
+          <button ion-item (click)="toggleSection(i)" >
+            <ion-icon item-left name="arrow-forward" *ngIf="!buttonHeader[i]"></ion-icon>
+            <ion-icon item-left name="arrow-down" *ngIf="buttonHeader[i]"></ion-icon>
+              {{ f }}
           </button>
-      </ion-list>
-  </ion-list>
+        <ion-list *ngIf="buttonHeader[i]" no-lines>
+          <ion-list-header *ngFor="let r of listado(f)"  no-padding>
+            <button ion-item (click)="mostrarInfo(r)"  detail-none>
+              {{ r.hora }}
+            </button>
+          </ion-list-header>
+        </ion-list>
+      </ion-list-header>
+    </ion-list>
 </ion-content>

@@ -2,9 +2,11 @@ import { Component } from '@angular/core';
 import { NavController ,Platform,NavParams,AlertController,ModalController} from 'ionic-angular';
 import { DbProvider } from '../../providers/db/db';
 
+
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html'
+
 })
 export class ContactPage {
 
@@ -17,8 +19,8 @@ export class ContactPage {
              calorias: string}>;*/
   runs:any[];
   fecha:any[];
-  aux:any[];
-  ru:any[];
+  buttonHeader:boolean[];
+
   constructor(public navCtrl: NavController, public db: DbProvider,
               public platform: Platform, public alertCtrl: AlertController,
               public modalCtrl: ModalController) {
@@ -34,33 +36,85 @@ export class ContactPage {
  imprimir(){
     this.db.getRun().then((res) =>{
        this.runs = res;
-       this.aux = this.runs;
+
      },(err)=>{ /* alert('error al sacar de la bd'+err) */ })
+     this.fecha=[];
+     this.buttonHeader=[];
 
      for(let i=0; i < this.runs.length ; i++){
-       let guardado : boolean=false;
-        if (i == 0 ){
-          this.orden.push(this.runs[0].fecha,this.runs[0]);
-        }else {
-          for(let j=0;j<this.orden.length || guardado==true ;j++){
-            if(this.orden[j].fecha==this.runs[i].fecha){
-              this.orden[j].runs.push(this.runs[i]);
-              guardado=true;
-            }
-          }
-          if(guardado==false){
-              this.orden.push(this.runs[i].fecha,this.runs[i]);
-          }
-        }
+       if (i == 0 ){
+         this.fecha.push(this.runs[0].fecha);
+         this.buttonHeader.push(false);
+
+
+       }else {
+         if(!this.incluido(this.runs[i].fecha)){
+           this.fecha.push(this.runs[i].fecha);
+           this.buttonHeader.push(false);
+
+         }
+       }
      }
 
+
+
   }
+toggleSection(i){
+  if(this.buttonHeader[i]==false){
+    this.buttonHeader[i]=true;
+  }else{
+    this.buttonHeader[i]=false;
+  }
+}
+incluido(f):boolean{
+  for(let i=0; i < this.fecha.length ; i++){
+    if(this.fecha[i]==f){
+      return true;
+    }
+  }
+  return false;
+}
+
+sepue(i,j):boolean{
+
+  if(i==j){
+    return true;
+  }
+    return false;
+  }
+sepue2(i):any{
+  return this.buttonHeader[i];
+}
+listado(f):any[]{
+  let obj=[];
+  for(let i=0; i < this.runs.length ; i++){
+    if(this.runs[i].fecha==f){
+    obj.push(this.runs[i])
+    }
+  }
+  return obj;
+}
+
+
+
 
   doRefresh(refresher) {
 
     this.db.getRun().then(res =>{
       this.runs = res;
-
+      this.fecha=[];
+      this.buttonHeader=[];
+      for(let i=0; i < this.runs.length ; i++){
+        if (i == 0 ){
+          this.fecha.push(this.runs[0].fecha);
+          this.buttonHeader.push(false);
+        }else {
+          if(!this.incluido(this.runs[i].fecha)){
+            this.fecha.push(this.runs[i].fecha);
+            this.buttonHeader.push(false);
+          }
+        }
+      }
       if(this.runs.length == res.length){
         refresher.complete();
       }
