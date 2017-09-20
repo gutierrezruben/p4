@@ -1,46 +1,33 @@
-<ion-header>
-  <ion-navbar>
+<ion-header no-border>
+  <ion-navbar color='rojointenso'>
     <ion-title>
-      Contact
+      Historial
     </ion-title>
   </ion-navbar>
 </ion-header>
-
-
-<!--ion-content>
-    <ion-list *ngFor="let run of runs; let i = index" >
-        <ion-list-header>
-          {{ run.fecha }}
-        </ion-list-header>
-        <ion-list *ngFor="let r of runs; let j = index" >
-          <button ion-item (click)="mostrarInfo(r)" *ngIf="r.fecha === run.fecha"  detail-none>
-            {{ r.hora }}
-          </button>
-      </ion-list>
-  </ion-list>
-</ion-content-->
 
 <ion-content >
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
-      pullingText="Pull to refresh"
+      pullingText="Desliza para actualizar"
       refreshingSpinner="circles"
-      refreshingText="Refreshing...">
+      refreshingText="Refrescando...">
     </ion-refresher-content>
   </ion-refresher>
 
     <ion-list  >
         <ion-list-header *ngFor="let f of fecha; let i = index" no-lines no-padding>
-          <button ion-item (click)="toggleSection(i)" >
+          <button ion-item (click)="toggleSection(i)"  [ngClass]="{'section-active': buttonHeader[i]}">
             <ion-icon item-left name="arrow-forward" *ngIf="!buttonHeader[i]"></ion-icon>
             <ion-icon item-left name="arrow-down" *ngIf="buttonHeader[i]"></ion-icon>
-              {{ f }}
+              <h1>{{ f }}</h1>
           </button>
         <ion-list *ngIf="buttonHeader[i]" no-lines>
           <ion-list-header *ngFor="let r of listado(f)"  no-padding>
             <button ion-item (click)="mostrarInfo(r)"  detail-none>
-              {{ r.hora }}
+              <ion-icon name="clock" item-start large></ion-icon>
+              <h1 class="card">{{r.hora}}</h1>
             </button>
           </ion-list-header>
         </ion-list>

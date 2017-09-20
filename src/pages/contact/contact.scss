@@ -1,7 +1,10 @@
 page-contact {
+  .card{
+    color: light;
+  }
 
   .accordion-list {
-        background: color($colors, light);
+        background: color($colors, dark);
         height: 100%;
     }
     .section {
@@ -10,8 +13,8 @@ page-contact {
         margin-bottom: 4px;
     }
     .section-active {
-        background: #ffc400;
-        color: #fff;
+        background: #E53935;
+        //color: #000;
     }
 
     .child {

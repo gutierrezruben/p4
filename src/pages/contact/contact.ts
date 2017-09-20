@@ -11,12 +11,6 @@ import { DbProvider } from '../../providers/db/db';
 export class ContactPage {
 
   orden:Array<{fecha: any, runs:Array<any>}>;
-  /*r:Array<{fecha: string,
-             hora: string,
-             distancia: string,
-             velocidad: string,
-             gps: string,
-             calorias: string}>;*/
   runs:any[];
   fecha:any[];
   buttonHeader:boolean[];
@@ -29,32 +23,30 @@ export class ContactPage {
                     });
   }
 
-  ionViewDidEnter() {
-     this.imprimir();
- }
+
 
  imprimir(){
     this.db.getRun().then((res) =>{
        this.runs = res;
+       this.fecha=[];
+       this.buttonHeader=[];
 
-     },(err)=>{ /* alert('error al sacar de la bd'+err) */ })
-     this.fecha=[];
-     this.buttonHeader=[];
-
-     for(let i=0; i < this.runs.length ; i++){
-       if (i == 0 ){
-         this.fecha.push(this.runs[0].fecha);
-         this.buttonHeader.push(false);
-
-
-       }else {
-         if(!this.incluido(this.runs[i].fecha)){
-           this.fecha.push(this.runs[i].fecha);
+       for(let i=0; i < this.runs.length ; i++){
+         if (i == 0 ){
+           this.fecha.push(this.runs[0].fecha);
            this.buttonHeader.push(false);
 
+
+         }else {
+           if(!this.incluido(this.runs[i].fecha)){
+             this.fecha.push(this.runs[i].fecha);
+             this.buttonHeader.push(false);
+
+           }
          }
        }
-     }
+     },(err)=>{ /* alert('error al sacar de la bd'+err) */ })
+
 
 
 
@@ -89,7 +81,7 @@ listado(f):any[]{
   let obj=[];
   for(let i=0; i < this.runs.length ; i++){
     if(this.runs[i].fecha==f){
-    obj.push(this.runs[i])
+      obj.push(this.runs[i])
     }
   }
   return obj;

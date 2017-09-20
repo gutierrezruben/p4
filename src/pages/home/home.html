@@ -1,6 +1,6 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Deporte</ion-title>
+<ion-header no-border>
+  <ion-navbar color='rojointenso'>
+    <ion-title>Entrenamiento</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -13,7 +13,7 @@
 
     <div align="center">
         <h1 class="crono">{{horahtml}}:{{minutohtml}}:{{segundohtml}}.{{centesimahtml}}</h1>
-        <button ion-button round outline [color]="isStop    ? 'primary' : 'dark'"   [disabled]="!isStop"  (click)="stop()"> <ion-icon name="pause"></ion-icon> </button>
+        <button ion-button round outline [color]="isStop    ? 'secondary' : 'dark'"   [disabled]="!isStop"  (click)="stop()"> <ion-icon name="pause"></ion-icon> </button>
         <button ion-button round outline [color]="isStart   ? 'secondary' : 'dark'" [disabled]="!isStart"  (click)="start()"> <ion-icon name="play"></ion-icon> </button>
         <button ion-button round outline [color]="isRestart ? 'danger' : 'dark'"    [disabled]="!isRestart" (click)="restart()"> <ion-icon name="square"></ion-icon> </button>
 

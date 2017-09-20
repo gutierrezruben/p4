@@ -11,6 +11,8 @@ $font-path: "../assets/fonts";
 // http://ionicframework.com/docs/theming/rtl-support/
 $app-direction: ltr;
 
+$refresher-icon-color: #fff;
+$refresher-text-color: #fff;
 
 @import "ionic.globals";
 
@@ -34,11 +36,15 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  //primary:    #488aff,
+  primary:    #D50000,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  rojointenso: #D50000,
+  unverde: #1B5E20
+
 );
 
 

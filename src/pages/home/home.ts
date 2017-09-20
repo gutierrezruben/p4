@@ -59,16 +59,16 @@ export class HomePage {
         }
 
         this.geo.getCurrentPosition().then((res) => {
-          this.listPosicion=this.listPosicion+res.coords.latitude+','+res.coords.longitude+';';
-            if(this.cont==1){
 
+            if(this.cont==1){
+              this.listPosicion=this.listPosicion+res.coords.latitude+','+res.coords.longitude+'|';
                  this.from = {lat:res.coords.latitude,lng: res.coords.longitude};
                  this.coords.lat=res.coords.latitude;
                  this.coords.lng=res.coords.longitude;
             }
 
             if(this.cont==2){
-
+              this.listPosicion=this.listPosicion+res.coords.latitude+','+res.coords.longitude;
                 this.to = {lat:res.coords.latitude,lng: res.coords.longitude};
                 this.dist = this.dist  + this.getDistanceBetweenPoints(this.from, this.to, 'km');
                 this.coords.lat=res.coords.latitude;
@@ -76,7 +76,7 @@ export class HomePage {
             }
 
             if(this.cont>2){
-
+              this.listPosicion=this.listPosicion+'|'+res.coords.latitude+','+res.coords.longitude;
                 this.from=this.to
                 this.to =  {lat:res.coords.latitude,lng: res.coords.longitude};
                 this.dist = this.dist + this.getDistanceBetweenPoints(this.from, this.to, 'km');
