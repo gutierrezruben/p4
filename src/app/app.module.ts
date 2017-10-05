@@ -15,6 +15,10 @@ import { DbProvider } from '../providers/db/db';
 
 import { SQLite } from '@ionic-native/sqlite';
 import { Geolocation } from '@ionic-native/geolocation';
+
+import { ChartModule } from 'angular2-highcharts';
+import * as highcharts from 'Highcharts';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -25,7 +29,8 @@ import { Geolocation } from '@ionic-native/geolocation';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    ChartModule.forRoot(highcharts)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
