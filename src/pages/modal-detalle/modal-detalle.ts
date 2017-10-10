@@ -16,6 +16,7 @@ import { IonicPage, NavController, NavParams, ViewController  } from 'ionic-angu
 export class ModalDetallePage {
   run:any;
   gps="40.737102,-73.990318|40.749825,-73.987963|40.752946,-73.987384|40.755823,-73.986397";
+  //ritmo=tiempo/distancia;
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public viewCtrl : ViewController ) {
                 this.run=this.navParams.data;

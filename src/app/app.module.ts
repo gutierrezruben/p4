@@ -4,8 +4,8 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import { HistorialPage } from '../pages/historial/historial';
+import { EntrenamientoPage } from '../pages/entrenamiento/entrenamiento';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -23,8 +23,8 @@ import * as highcharts from 'Highcharts';
   declarations: [
     MyApp,
     AboutPage,
-    ContactPage,
-    HomePage,
+    HistorialPage,
+    EntrenamientoPage,
     TabsPage
   ],
   imports: [
@@ -36,8 +36,8 @@ import * as highcharts from 'Highcharts';
   entryComponents: [
     MyApp,
     AboutPage,
-    ContactPage,
-    HomePage,
+    HistorialPage,
+    EntrenamientoPage,
     TabsPage
   ],
   providers: [

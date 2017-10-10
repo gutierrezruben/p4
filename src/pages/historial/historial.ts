@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { NavController ,Platform,NavParams,AlertController,ModalController} from 'ionic-angular';
+import { NavController ,Platform,AlertController,ModalController} from 'ionic-angular';
 import { DbProvider } from '../../providers/db/db';
 
 
 @Component({
-  selector: 'page-contact',
-  templateUrl: 'contact.html'
+  selector: 'page-historial',
+  templateUrl: 'historial.html'
 
 })
-export class ContactPage {
+export class HistorialPage {
 
   orden:Array<{fecha: any, runs:Array<any>}>;
   runs:any[];

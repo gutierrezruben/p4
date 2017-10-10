@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController, Platform, AlertController  } from 'ionic-angular';
+import { NavController, AlertController  } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 //import { LatLng } from '@ionic-native/google-maps';
 import { DbProvider } from '../../providers/db/db';
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-entrenamiento',
+  templateUrl: 'entrenamiento.html'
 })
-export class HomePage {
+export class EntrenamientoPage {
 
   hora:number= 0;
   minuto:number= 0;
@@ -208,15 +208,15 @@ export class HomePage {
   }
 
   guardarBD(){
-    this.distmetro=this.dist*1000;
+    //this.distmetro=this.dist*1000;
+    this.tiempocarrera=this.tiempocarrera/60;
 
-    this.vel = this.distmetro/this.tiempocarrera;
     this.run = {
       fecha: this.dia,
       hora: this.tiempo,
       distancia: this.dist ,
-      tiempocarrera: this.tiempocarrera/100,
-      velocidad: this.vel,
+      tiempocarrera: this.tiempocarrera,
+      velocidad:this.dist/this.tiempocarrera,
       gps: this.listPosicion,
       calorias:0
     }
@@ -231,38 +231,39 @@ export class HomePage {
       });
   }
 
-  fechaYhora(){
-      this.myDate= new Date().toISOString();
-      this.datos=this.myDate.split("T");
-      this.dia= this.datos[0];
-      this.tiempo= this.datos[1].split(".",1);
-  }
+    fechaYhora(){
+        this.myDate= new Date().toISOString();
+        this.datos=this.myDate.split("T");
+        this.dia= this.datos[0];
+        this.tiempo= this.datos[1].split(".",1);
+    }
 
-  getDistanceBetweenPoints(start, end, units){
+    getDistanceBetweenPoints(start, end, units){
 
-       let earthRadius = {
-           miles: 3958.8,
-           km: 6371
-       };
+         let earthRadius = {
+             miles: 3958.8,
+             km: 6371
+         };
 
-       let R = earthRadius[units || 'miles'];
-       let lat1 = start.lat;
-       let lon1 = start.lng;
-       let lat2 = end.lat;
-       let lon2 = end.lng;
+         let R = earthRadius[units || 'miles'];
+         let lat1 = start.lat;
+         let lon1 = start.lng;
+         let lat2 = end.lat;
+         let lon2 = end.lng;
 
-       let dLat = this.toRad((lat2 - lat1));
-       let dLon = this.toRad((lon2 - lon1));
-       let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-               Math.cos(this.toRad(lat1)) * Math.cos(this.toRad(lat2)) *
-               Math.sin(dLon / 2) *
-               Math.sin(dLon / 2);
-       let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-       let d = R * c;
-       let sol= Math.round(d*100)/100;
-       return sol;
+         let dLat = this.toRad((lat2 - lat1));
+         let dLon = this.toRad((lon2 - lon1));
+         let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                 Math.cos(this.toRad(lat1)) * Math.cos(this.toRad(lat2)) *
+                 Math.sin(dLon / 2) *
+                 Math.sin(dLon / 2);
+         let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+         let d = R * c;
 
-   }
+         let sol= Math.round(d*100)/100;
+         return sol;
+
+     }
 
    toRad(x){
        return x * Math.PI / 180;

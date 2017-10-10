@@ -3,6 +3,19 @@
     <ion-title>
       Historial
     </ion-title>
+
+      <ion-toolbar>
+        <ion-item>
+          <ion-label>Date</ion-label>
+          <ion-datetime displayFormat="DD MMMM YYYY" min="2016" max="2020-10-31" [(ngModel)]="myDate"
+              monthNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
+              monthShortNames="Ene, Fev, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic"
+              >
+          </ion-datetime>
+        </ion-item>
+
+      </ion-toolbar>
+
   </ion-navbar>
 </ion-header>
 
@@ -15,6 +28,21 @@
       refreshingText="Refrescando...">
     </ion-refresher-content>
   </ion-refresher>
+
+  <ion-item>
+    <ion-select [(ngModel)]="sexo" placeholder="Día" (ionChange)="genero()" interface="popover" >
+      <ion-option value="h">Hombre</ion-option>
+      <ion-option value="m">Mujer</ion-option>
+    </ion-select>
+    <ion-select [(ngModel)]="sexo" placeholder="Mes" (ionChange)="genero()" interface="popover" >
+      <ion-option value="h">Hombre</ion-option>
+      <ion-option value="m">Mujer</ion-option>
+    </ion-select>
+    <ion-select [(ngModel)]="sexo" placeholder="Año" (ionChange)="genero()" interface="popover" >
+      <ion-option value="h">Hombre</ion-option>
+      <ion-option value="m">Mujer</ion-option>
+    </ion-select>
+  </ion-item>
 
     <ion-list  >
         <ion-list-header *ngFor="let f of fecha; let i = index" no-lines no-padding>
