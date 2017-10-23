@@ -9,9 +9,9 @@ import { EntrenamientoPage } from '../entrenamiento/entrenamiento';
 })
 export class TabsPage {
 
-  tab1Root = EntrenamientoPage;
+  tab3Root = EntrenamientoPage;
   tab2Root = AboutPage;
-  tab3Root = HistorialPage;
+  tab1Root = HistorialPage;
 
   constructor() {
 

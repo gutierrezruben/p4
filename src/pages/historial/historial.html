@@ -3,23 +3,32 @@
     <ion-title>
       Historial
     </ion-title>
-
-      <ion-toolbar>
-        <ion-item>
-          <ion-label>Date</ion-label>
-          <ion-datetime displayFormat="DD MMMM YYYY" min="2016" max="2020-10-31" [(ngModel)]="myDate"
-              monthNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
-              monthShortNames="Ene, Fev, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic"
-              >
-          </ion-datetime>
-        </ion-item>
-
-      </ion-toolbar>
-
   </ion-navbar>
+
+
+  <ion-toolbar color='rojointenso'>
+
+    <ion-item>
+      <ion-label>Fecha</ion-label>
+      <ion-datetime displayFormat="DD MMMM YYYY" min="2016" max="2020-10-31"
+          [(ngModel)]="fechaseleccionada" (ionChange)="activo()"
+          monthNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
+          monthShortNames="Ene, Fev, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic"
+          cancelText="Cancelar"
+          doneText="Aceptar"
+          dayValues="{{this.diasEntrenados}}"
+          monthValues="{{this.mesesEntrenados}}"
+          yearValues="{{this.anyosEntrenados}}"
+          placeholder="Pulse aquí para seleccionar una fecha"
+          ></ion-datetime>
+    </ion-item>
+
+  </ion-toolbar>
+
 </ion-header>
 
 <ion-content >
+
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
@@ -29,22 +38,9 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-item>
-    <ion-select [(ngModel)]="sexo" placeholder="Día" (ionChange)="genero()" interface="popover" >
-      <ion-option value="h">Hombre</ion-option>
-      <ion-option value="m">Mujer</ion-option>
-    </ion-select>
-    <ion-select [(ngModel)]="sexo" placeholder="Mes" (ionChange)="genero()" interface="popover" >
-      <ion-option value="h">Hombre</ion-option>
-      <ion-option value="m">Mujer</ion-option>
-    </ion-select>
-    <ion-select [(ngModel)]="sexo" placeholder="Año" (ionChange)="genero()" interface="popover" >
-      <ion-option value="h">Hombre</ion-option>
-      <ion-option value="m">Mujer</ion-option>
-    </ion-select>
-  </ion-item>
+  <h1>Hola: {{this.diasEntrenados}}</h1>
 
-    <ion-list  >
+    <!--ion-list  >
         <ion-list-header *ngFor="let f of fecha; let i = index" no-lines no-padding>
           <button ion-item (click)="toggleSection(i)"  [ngClass]="{'section-active': buttonHeader[i]}">
             <ion-icon item-left name="arrow-forward" *ngIf="!buttonHeader[i]"></ion-icon>
@@ -60,5 +56,16 @@
           </ion-list-header>
         </ion-list>
       </ion-list-header>
-    </ion-list>
+    </ion-list-->
+
+        <ion-list *ngIf="activ" no-lines>
+          <ion-list-header *ngFor="let r of listado()"  no-padding>
+            <button ion-item (click)="mostrarInfo(r)"  detail-none>
+              <ion-icon name="clock" item-start large></ion-icon>
+              <h1 class="card">{{r.hora}}</h1>
+            </button>
+          </ion-list-header>
+        </ion-list>
+
+
 </ion-content>
