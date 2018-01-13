@@ -1,0 +1,50 @@
+
+<ion-header no-border>
+
+  <ion-navbar color='rojointenso'>
+    <ion-title>
+      Ajustes
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Nombre</ion-label>
+          <ion-input type="text" value=""></ion-input>
+        </ion-item>
+        <ion-item>
+
+          <ion-label floating>Sexo</ion-label>
+          <ion-select [(ngModel)]="sexo">
+            <ion-option value="H">Hombre</ion-option>
+            <ion-option value="M">Mujer</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Fecha de nacimiento</ion-label>
+          <ion-datetime
+            displayFormat="DD MMMM YY"
+            [(ngModel)]="nacimiento"
+            (ionChange)="activo()"
+            monthNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
+            monthShortNames="Ene, Fev, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic"
+            cancelText="Cancelar"
+            doneText="Aceptar"
+          ></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Altura</ion-label>
+          <ion-input type="number" value=""></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Peso</ion-label>
+          <ion-input type="number" value=""></ion-input>
+        </ion-item>
+        <ion-item>
+
+        </ion-item>
+    </ion-list>
+      <button ion-button round>Guardar</button>
+</ion-content>

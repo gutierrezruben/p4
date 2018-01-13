@@ -3,15 +3,17 @@ import { Component } from '@angular/core';
 import { AboutPage } from '../about/about';
 import { HistorialPage } from '../historial/historial';
 import { EntrenamientoPage } from '../entrenamiento/entrenamiento';
+import { AjustesPage } from '../ajustes/ajustes';
 
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
 
-  tab3Root = EntrenamientoPage;
+  tab1Root = EntrenamientoPage;
   tab2Root = AboutPage;
-  tab1Root = HistorialPage;
+  tab3Root = HistorialPage;
+  tab4Root = AjustesPage;
 
   constructor() {
 

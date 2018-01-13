@@ -25,9 +25,9 @@ export class AboutPage {
                  data: {      //DESNIVEL
                    labels: ["Intensidad", "Calorias", "Duración", "Distancia","Ritmo"],
                    datasets: [{
-                     label: "Tu",
-                     backgroundColor: "rgba(54, 162, 235, 0.2)",
-                     borderColor: "rgba(54, 162, 235, 1)",
+                     label: "",
+                     backgroundColor: "rgba(255, 203, 0, 0.5)",
+                     borderColor: "rgba(255, 203, 0, 1)",
                      data: [80, 80, 80, 80,80]
                    /*}, {
                      label: "Media",

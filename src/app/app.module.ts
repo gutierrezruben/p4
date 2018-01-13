@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { HistorialPage } from '../pages/historial/historial';
 import { EntrenamientoPage } from '../pages/entrenamiento/entrenamiento';
+import { AjustesPage } from '../pages/ajustes/ajustes';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -25,6 +26,7 @@ import * as highcharts from 'Highcharts';
     AboutPage,
     HistorialPage,
     EntrenamientoPage,
+    AjustesPage,
     TabsPage
   ],
   imports: [
@@ -38,6 +40,7 @@ import * as highcharts from 'Highcharts';
     AboutPage,
     HistorialPage,
     EntrenamientoPage,
+    AjustesPage,
     TabsPage
   ],
   providers: [
