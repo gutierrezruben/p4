@@ -1,6 +1,6 @@
 import { Component,ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import * as HighCharts from 'highcharts';
+//import * as HighCharts from 'highcharts';
 import Chart from 'chart.js';
 
 @Component({

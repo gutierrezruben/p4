@@ -22,7 +22,7 @@
   <ion-card>
 
   <!--img src="assets/img/advance-card-map-paris.png"-->
-  <img src="https://maps.googleapis.com/maps/api/staticmap?zoom=14&amp;size=400x300&amp;path=color:0xD50000|weight:5|{{gps}}">
+  <img src="https://maps.googleapis.com/maps/api/staticmap?zoom=14&amp;size=400x300&amp;path=color:0xD50000|weight:5|{{gps}}&markers=color:green%7Clabel:I%7C{{inicio}}&markers=color:red%7Clabel:F%7C{{fin}}">
   <ion-fab right top>
     <button ion-fab>
       <ion-icon name="pin"></ion-icon>
@@ -30,6 +30,29 @@
   </ion-fab>
 
   <ion-item>
+    <ion-icon name="map" item-left large ></ion-icon>
+    <h2 class="crono">Distancia:</h2>
+    <p class="crono">{{this.distancie}} Km</p>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="speedometer" item-left large ></ion-icon>
+    <h2 class="crono">Ritmo:</h2>
+    <p class="crono">{{ritmo}} min/Km</p>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="timer" item-left large ></ion-icon>
+    <h2 class="crono">Duración:</h2>
+    <p class="crono">{{duracion}} min</p>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="flame" item-left large ></ion-icon>
+    <h2 class="crono">Calorias quemadas:</h2>
+    <p class="crono">{{calorias}} Kcal</p>
+  </ion-item>
+
+
+  <!--ion-item>
     <ion-icon name="map" item-left large ></ion-icon>
     <h2 class="crono">Distancia:</h2>
     <p class="crono">{{run.distancia}} Km</p>
@@ -49,7 +72,6 @@
     <ion-icon name="flame" item-left large ></ion-icon>
     <h2 class="crono">Calorias quemadas:</h2>
     <p class="crono">{{run.calorias}} Kcal</p>
-  </ion-item>
-
+  </ion-item-->
 </ion-card>
 </ion-content>
